@@ -1,0 +1,87 @@
+<!--
+Primeira lista de exercícios. Parte 04 HTML, CSS e JAVASCRIPT.
+1) Exercício de validação de campos de tela de login:
+a) Crie uma tela de login onde o nome de usuário é o CPF (exatamente
+11 dígitos) e a senha (pelo menos 6 dígitos sendo todos numéricos)
+b) A TELA DE LOGIN DEVE SER VALIDADA PARA:
+a. CPF: em caso de erro mostrar um alerta para o número de
+dígitos corretos e quantos o usuário digitou.
+b. SENHA: em caso de erro identificar o erro com um ALERTA e
+sugerir a possível correção.
+c. Em caso de CPF e senha corretos mostrar uma mensagem de
+ALERTA de sucesso validando a tela de LOGIN.
+-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+
+    <title>Faça o login</title>
+
+    <script type="text/javascript">
+
+    var exCPF = "99999999999";
+    var exSENHA = "123456";
+    
+    function validacao(){
+        var telalogin = document.forms["form"]
+        var cpf = form.cpf.value;
+        var senha = form.senha.value;
+        
+        if (cpf.length != 11) {
+            alert("Você deve informar 11 dígitos!\nDígitos informados "+cpf.length);
+            form.cpf.focus();
+            return false;
+        }
+
+        if (senha == "") {
+            alert("Campo obrigatório!\nInforme sua senha!");
+            form.senha.focus();
+            return false;
+        }
+
+        if (senha.length < 6) {
+            alert("A senha deve ter pelo menos 6 números!");
+            form.senha.focus();
+            return false;
+        }
+
+        if (exCPF== cpf && exSENHA == senha) {
+            alert("Login realizado com sucesso!");
+        }
+    }
+
+    </script>
+
+</head>
+<body>
+    <main class="login">
+
+    <div class="login-box">
+        <h2 class="login-title">Entrar</h2>
+        
+        <form class="login-form" name="form" method="POST" onsubmit="return validacao()">
+            
+            <div class ="user-box">
+                <input class="login-cpf" type="text" name="cpf"  maxlength="11">
+                <label>CPF</label>
+            </div>
+            
+            <div class="user-box">
+                <input class="login-senha" type="password" name="senha"  minlength="6">
+                <label>Senha</label> 
+            </div>      
+            
+            <div class="user-box">
+                <button class="login-submit" onclick="return validacao()">LOGIN</button> 
+            </div>
+        
+        </form>
+     </div>
+    </main>
+</body>
+</html>
